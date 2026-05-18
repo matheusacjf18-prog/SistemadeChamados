@@ -1,0 +1,279 @@
+/* ==========================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #0062cc;
+    --primary-dark: #004a99;
+    --branding: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --bg-main: #f1f5f9;
+    --glass: rgba(255, 255, 255, 0.95);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.04);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   2. SISTEMA DE TRANSIÇÃO DE TELAS
+   ========================================== */
+.screen-transition {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: var(--transition);
+}
+
+.screen-transition.active {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ajuste específico para o login que usa flex/row */
+#login-screen.active {
+    display: flex !important;
+}
+
+/* ==========================================
+   3. DESIGN DO LOGIN E BRANDING
+   ========================================== */
+.bg-branding {
+    background: var(--branding);
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-branding::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 210, 255, 0.05) 0%, transparent 70%);
+    top: -50%;
+    left: -50%;
+}
+
+.logo-branding {
+    max-width: 180px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+.logo-dashboard {
+    max-width: 160px;
+    transition: var(--transition);
+}
+
+/* ==========================================
+   4. COMPONENTES: CARDS (GLASSMORPHISM)
+   ========================================== */
+.auth-card {
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 24px !important;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem !important;
+    margin-bottom: 2rem;
+}
+
+/* Cabeçalhos de seção */
+.border-bottom {
+    border-color: #e2e8f0 !important;
+}
+
+/* ==========================================
+   5. FORMULÁRIOS E BOTÕES
+   ========================================== */
+.form-control {
+    border-radius: 12px;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 98, 204, 0.1);
+    border-color: var(--primary);
+}
+
+.btn-primary {
+    background: var(--branding);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+    filter: brightness(1.1);
+}
+
+.btn-white {
+    background: white;
+    border: 1px solid #e2e8f0;
+    transition: var(--transition);
+}
+
+.btn-white:hover {
+    background: #f8fafc;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   6. TABELAS PREMIUM (ESTILO SPREADSHEET)
+   ========================================== */
+.table-responsive {
+    border-radius: 15px;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px; /* Ajuste para o spacing inicial */
+}
+
+.table thead th {
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #94a3b8;
+    padding: 1rem 1.2rem;
+}
+
+.table tbody tr {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background-color: #fdfdfd;
+}
+
+.table td {
+    border: none;
+    padding: 1.2rem;
+    vertical-align: middle;
+}
+
+.table tbody tr td:first-child { border-radius: 12px 0 0 12px; }
+.table tbody tr td:last-child { border-radius: 0 12px 12px 0; }
+
+/* ==========================================
+   7. MENU LATERAL (OFFCANVAS)
+   ========================================== */
+.offcanvas {
+    background: var(--glass) !important;
+    backdrop-filter: blur(20px);
+    border-left: none !important;
+    width: 320px !important;
+}
+
+.offcanvas-header {
+    background: var(--branding);
+    color: white;
+    padding: 2.5rem 1.5rem;
+}
+
+.list-group-item-action {
+    border: none !important;
+    border-radius: 12px;
+    margin-bottom: 4px;
+    padding: 14px 20px !important;
+    font-weight: 500;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.list-group-item-action:hover {
+    background: #f1f5f9 !important;
+    color: var(--primary) !important;
+    transform: translateX(8px);
+}
+
+/* Submenu Admin Colapsável */
+#adminSubmenu {
+    transition: var(--transition);
+}
+
+.collapse.bg-light {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    margin: 5px 10px 15px 10px;
+    border-radius: 12px;
+}
+
+/* ==========================================
+   8. STATUS, BADGES E STATS
+   ========================================== */
+.badge {
+    padding: 0.6em 1em;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.bg-primary-subtle { background-color: rgba(0, 98, 204, 0.1) !important; }
+
+.stats-cards .card {
+    border: none;
+    background: white;
+    border-radius: 18px;
+    transition: var(--transition);
+}
+
+.stats-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+/* ==========================================
+   9. CUSTOMIZAÇÕES FINAIS (SCROLLBAR E MODAL)
+   ========================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.modal-custom {
+    backdrop-filter: blur(8px);
+}
+
+/* Animação para o ícone do menu */
+.menu-toggle-btn span {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.menu-toggle-btn:hover span {
+    transform: rotate(90deg);
+}
